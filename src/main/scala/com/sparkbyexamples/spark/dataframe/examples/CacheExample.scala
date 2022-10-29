@@ -9,18 +9,24 @@ object CacheExample extends App {
     .appName("SparkByExamples.com")
     .getOrCreate()
 
-  //read csv with options
-  val df = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true"))
-    .csv("src/main/resources/zipcodes.csv")
+//  //read csv with options
+//  val df = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true"))
+//    .csv("src/main/resources/zipcodes.csv")
 
-  val df2 = df.where(col("State") === "PR").cache()
-  df2.show(false)
+//  val df2 = df.where(col("State") === "PR").cache()
+//  df2.show(false)
+//
+//  println(df2.count())
+//
+//  val df3 = df2.where(col("Zipcode") === 704)
+//
+//
+//  println(df2.count())
+  val df=spark.read.options(Map("inferschema"->"true","delimiter"->",","header"->"true")).csv("src/main/resources/zipcodes.csv")
+  df.printSchema()
+    df.show(false)
 
-  println(df2.count())
-
-  val df3 = df2.where(col("Zipcode") === 704)
 
 
-  println(df2.count())
 
 }
