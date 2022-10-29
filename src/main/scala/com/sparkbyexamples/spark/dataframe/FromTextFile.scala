@@ -22,23 +22,23 @@ object FromTextFile {
       val elements = f.getString(0).split(",")
       (elements(0),elements(1))
     })
-
-    df2.printSchema()
-    df2.show(false)
-
-    // returns Dataset[String]
-    val ds:Dataset[String] = spark.read.textFile("src/main/resources/csv/text01.txt")
-    ds.printSchema()
-    ds.show(false)
-
-    //converting to columns by splitting
-    import spark.implicits._
-    val ds2 = ds.map(f=> {
-     val elements = f.split(",")
-      (elements(0),elements(1))
-    })
-
-    ds2.printSchema()
-    ds2.show(false)
+//
+//    df2.printSchema()
+//    df2//.show(false)
+//
+//    // returns Dataset[String]
+//    val ds:Dataset[String] = spark.read.textFile("src/main/resources/csv/text01.txt")
+//    ds.printSchema()
+//    ds//.show(false)
+//
+//    //converting to columns by splitting
+//    import spark.implicits._
+//    val ds2 = ds.map(f=> {
+//     val elements = f.split(",")
+//      (elements(0),elements(1))
+//    })
+//
+//    ds2.printSchema()
+//    ds2//.show(false)
   }
 }
