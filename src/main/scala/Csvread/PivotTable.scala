@@ -1,6 +1,7 @@
 package Csvread
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.expr
 
 object PivotTable {
 
@@ -16,13 +17,20 @@ object PivotTable {
    // df.show(5,false)
 
 
-    val pivotDF= df.groupBy("Product").pivot("Country").sum("Amount")
+    //val pivotDF= df.groupBy("Product").pivot("Country").sum("Amount")
     //pivotDF.show()
-    
 
 
+    val countries = Seq("USA", "China", "Canada", "Mexico")
+    val pivotDF = df.groupBy("Product").pivot("Country", countries).sum("Amount")
+    pivotDF.show()
 
 
+    //unpivot
+    val unPivotDF = pivotDF.select($"Product",
+      expr("stack(3, 'Canada', Canada, 'China', China, 'Mexico', Mexico) as (Country,sum)"))
+      .where("sum is not null")
+    unPivotDF.show()
 
 
   }

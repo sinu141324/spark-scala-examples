@@ -28,10 +28,10 @@ object Dropduplicatevalues {
 
     // Use distinct() – Remove Duplicate Rows on DataFrame
 
-   /* val distinctdf = df.distinct()
+    val distinctdf = df.distinct()
     println("Distinct count:"+distinctdf.count())
     distinctdf.show()
-    //distinctdf.count()*/
+    distinctdf.count()
 
 
     // Distinct using dropDuplicates row same as distinct
@@ -39,10 +39,10 @@ object Dropduplicatevalues {
 
     //Distinct using dropDuplicate in particular columns
 
-    val dropdf = df.dropDuplicates("department","salary")
+ /*   val dropdf = df.dropDuplicates("department","salary")
 
     dropdf.show()
-
+*/
 
 
 
