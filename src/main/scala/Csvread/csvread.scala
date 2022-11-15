@@ -1,8 +1,7 @@
 package Csvread
 
 import org.apache.spark.sql.SparkSession
-
-object csvread {
+ object csvread {
 
   def main(args: Array[String]): Unit = {
     //csv read file

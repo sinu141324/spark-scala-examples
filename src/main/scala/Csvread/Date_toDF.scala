@@ -9,11 +9,22 @@ object Date_toDF {
     spark.sparkContext.setLogLevel("ERROR")
     import org.apache.spark.sql.functions._
     import spark.sqlContext.implicits._
-    Seq(("04/13/2019"))
-      .toDF("Input")
+    val data1 = Seq(("2019-01-23"))
+
+    val df1 = data1.toDF("Input")
+    val df2 = df1.select(current_date() as ("current_date"),
+      col("Input"),
+      date_format(col("Input"), "MM-dd-yyyy").as("format")
+    )
+    df2.show()
+
+    val data2 = Seq(("04/13/2019"))
+      val df3 =data2 .toDF("Input")
       .select(col("Input"),
-        to_date(col("Input"), "MM/dd/yyyy").as("to_date")
-      ).show()
+
+      )
+        df3.show()
+
 
   }
 
