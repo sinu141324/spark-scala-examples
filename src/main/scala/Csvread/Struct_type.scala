@@ -1,3 +1,4 @@
+/*
 package Csvread
 
 import org.apache.spark.sql.types.{ArrayType, DataType, IntegerType, MapType, StringType, StructField, StructType}
@@ -86,3 +87,4 @@ object Struct_type {
   }
 
 }
+*/
