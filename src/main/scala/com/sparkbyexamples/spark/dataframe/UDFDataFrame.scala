@@ -9,11 +9,13 @@ object UDFDataFrame {
       .master("local[3]")
       .appName("SparkByExample")
       .getOrCreate()
+    spark.sparkContext.setLogLevel("ERROR")
 
     val data = Seq(("2018/01/23",23),("2018/01/24",24),("2018/02/20",25))
 
     import spark.sqlContext.implicits._
     val df = data.toDF("date1","day")
+    df.show()
 
     val replace: String => String = _.replace("/","-")
     import org.apache.spark.sql.functions.udf
